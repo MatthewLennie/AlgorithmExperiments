@@ -4,6 +4,14 @@ Created on Sun Jul  7 17:41:25 2019
 
 Just a bit of experimenting with the Iris data set to playing around with 
 decision trees and LDA
+
+Principles Learnt: 
+    1. LDA seems effective for this vanilla test case
+    2. Random Forest helps with validation error. 
+    3. Controlling the depth and number of features helps with over fitting
+    4. More trees > More features. 
+    5. Both ridiculously fast
+    6. 
 @author: matt_
 """
 
@@ -84,3 +92,15 @@ print(scores)
 # less depth and estimators were nessescary. 
 # Even with 1 estimator already good. 
 
+#%% Boost 
+
+modelBoost = AdaBoostClassifier(n_estimators=100)
+
+model.fit(x_LDA_train,y_train)
+
+scores = model.score(x_LDA_train, y_train)
+
+print(scores)
+
+scores = model.score(x_LDA_test, y_test)
+print(scores)
