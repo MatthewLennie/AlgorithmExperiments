@@ -4,7 +4,14 @@ Created on Mon Oct 21 00:43:28 2019
 
 Solution to the Stock Trading Hacker Rank Problem. 
 
-Tradi
+There was only 500 data points availiable so it seemed to me that anything other
+than the most simple algorithm would be over fitting. Initial analysis of the data
+showed a pretty complex structure. 
+
+The final tactic is to simply take a rolling median and compare to the price move. 
+Sell high, buy low with no looking at trends. 
+
+If there was more data, would be a nice RL problem. 
 @author: matt_
 """
 
