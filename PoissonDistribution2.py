@@ -14,13 +14,32 @@ sampleB = np.mean([128+40*y**2 for y in poisson(1.55).rvs(10000)])
 
 print(sampleA)
 print(sampleB)
-
+#%%
 expectA = 0
 expectB = 0
-for i in range(1000):
+cumProb = 0 
+for i in range(0,1000):
+    cumProb += poisson(0.88).pmf(i)
     expectA += poisson(0.88).pmf(i)*(160+40*i^2)
     expectB += poisson(1.55).pmf(i)*(128+40*i^2)
     
-print(expectA)
+print(expectA/cumProb)
 print(expectB)
+ #%%
+
+dist = poisson(3)
+dist.cdf(1)
+dist.pmf(0)
+
+#Always look for the inverse case as a short cut
+print(1-2*dist.pmf(1)*dist.pmf(0)+dist.pmf(0)*dist.pmf(0))
+
 #%%
+
+dist = poisson(1.2)
+dist.cdf(2)
+record = [] 
+for i in range(1000000):
+    record.append(sum(dist.rvs(40))>3)
+
+np.mean(record)
