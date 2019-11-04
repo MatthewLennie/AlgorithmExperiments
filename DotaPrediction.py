@@ -99,3 +99,81 @@ print(eclf.score(X_train,y_train))
 print(eclf.score(X_test,y_test))
 #%%
 
+
+def countStudents(height,ascend=True):
+    # With a little more time I would check for the boundary cases that make it fail. 
+    Indicies = {}
+    
+    if ascend:
+        for i,Student in enumerate(height):
+            chain=True
+            for j,SecondStudent in enumerate(height[i+1:]):
+#                print(chain)
+#                print(Student)
+#                print(SecondStudent)
+#                print("---------------------------------------------")
+                if Student> SecondStudent or Student==SecondStudent and not chain:
+#                    print("store {} {}".format(Student,SecondStudent))
+                    Indicies[j+i+1] = i
+                    if Student>SecondStudent:
+                        Indicies[i] = i
+#                    chain=False
+                elif Student< SecondStudent:
+#                    print("break chain")
+                    chain=False
+
+    else:   
+        print(ascend)
+        for i,Student in enumerate(height):
+            chain=True
+            for j,SecondStudent in enumerate(height[i+1:]):
+#                print(chain)
+#                print(Student)
+#                print(SecondStudent)
+#                print("---------------------------------------------")
+                if Student< SecondStudent or Student==SecondStudent and not chain:
+#                    print("store {} {}".format(Student,SecondStudent))
+                    Indicies[j+i+1] = i
+                    if Student<SecondStudent:
+                        Indicies[i] = i
+                    chain=False
+                elif Student> SecondStudent:
+#                    print("break chain")
+                    chain=False
+    return Indicies
+
+#%%
+countStudents([1,1,3,4,1,1,4])
+blah = [1,1,3,4,1,1,4]
+
+
+def Sort(input_list,descend=False):
+    input_list_sorted = input_list.copy()
+    input_list_sorted.sort(reverse=descend)
+    out_of_place = 0
+    locations = {}
+    for idx, (i,j) in enumerate(zip(input_list,input_list_sorted)):
+        if not i==j:
+            out_of_place +=1
+            locations[idx] = i#
+    return out_of_place, locations
+Sort(blah)        
+
+
+def SmallestChange(inp_list):
+    asc_results = Sort(inp_list)
+    dsc_results = Sort(inp_list,descend=True)
+    print(asc_results)
+    print(dsc_results)
+    for key in asc_results:
+        if asc_results[key]<
+SmallestChange(blah)
+    
+#len(countStudents([9,8,7,6,5,2,5,1],ascend=False))
+#%%
+for key,item in a:
+    print(key)
+#%%
+
+if a:
+    print('asdf')
